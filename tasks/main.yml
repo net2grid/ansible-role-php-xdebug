@@ -12,13 +12,13 @@
     php_xdebug_config_filename: "{{ __php_xdebug_config_filename }}"
   when: php_xdebug_config_filename is not defined
 
-- name: Ensure dependencies for building from source are installed (RedHat).
+- name: Check dependencies for source build (RedHat).
   yum: "name={{ item }} state=installed"
   with_items:
     - '@development'
   when: ansible_os_family == 'RedHat'
 
-- name: Ensure dependencies for building from source are installed (Debian).
+- name: Check dependencies for source build (Debian).
   apt: "name={{ item }} state=installed"
   with_items:
     - build-essential
