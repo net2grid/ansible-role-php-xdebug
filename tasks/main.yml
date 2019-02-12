@@ -13,15 +13,15 @@
   when: php_xdebug_config_filename is not defined
 
 - name: Check dependencies for source build (RedHat).
-  yum: "name={{ item }} state=installed"
-  with_items:
-    - '@development'
+  yum:
+    name: '@development'
+    state: present
   when: ansible_os_family == 'RedHat'
 
 - name: Check dependencies for source build (Debian).
-  apt: "name={{ item }} state=installed"
-  with_items:
-    - build-essential
+  apt:
+    name: build-essential
+    state: present
   when: ansible_os_family == 'Debian'
 
 - name: Untar Xdebug.
